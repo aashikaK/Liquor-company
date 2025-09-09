@@ -44,7 +44,11 @@ require "navbar.php";
   </div>
 </section>
 
-
+<!-- Chatbot button -->
+<div class="chatbot">
+  <img src="images/chatbox.png" alt="Chatbot" class="chatbot-icon">
+  <span class="chat-label">Ask me your queries!</span>
+</div>
 
 </body>
 </html>
