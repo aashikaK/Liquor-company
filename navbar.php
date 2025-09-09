@@ -1,141 +1,192 @@
-<!-- navbar.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a0a23; /* Navy background */
-      color: white;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navbar</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0a0a23;
+    color: white;
+  }
 
-    /* Navbar container */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      background-color: rgba(10, 10, 35, 0.9);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
+  /* Navbar container */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(10,10,35,0.95);
+    position: fixed;
+    top: 0;
+    width: 95%;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  }
 
-    /* Logo section */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+  /* Logo left */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .logo img {
+    height: 50px;
+    max-width: 100px;
+  }
+  .logo span {
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFD700;
+    white-space: nowrap;
+  }
 
-    .logo img {
-      height: 70px;
-    }
+  /* Nav right (menu + hamburger) */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    flex-wrap: wrap;      /* allow wrapping on smaller screens */
+  }
 
-    .logo span {
-      font-size: 24px;
-      font-weight: bold;
-      color: #FFD700;
-    }
+  .menu {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;      /* wrap if screen is too narrow */
+    flex-shrink: 1;       /* allow menu to shrink */
+  }
 
-    /* Menu links */
+  .menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .menu a:hover {
+    color: #FFD700;
+    text-shadow: 0 0 6px #FFD700;
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left:20px;
+    z-index: 2000;
+  }
+  .hamburger div {
+    width: 30px;
+    height: 3px;
+    background: #FFD700;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* Hamburger animation */
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px,5px);
+  }
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px,-5px);
+  }
+
+  /* MOBILE + small desktop */
+  @media (max-width: 768px) {
     .menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%; /* below hamburger */
+      right: 0;
+      background: rgba(10,10,35,0.95);
+      width: 200px;
+      padding: 10px;
+      gap: 10px;
+      border-radius: 6px;
+    }
+    .menu.active {
       display: flex;
-      gap: 30px;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    /* shrink logo on smaller screens */
+    .logo img {
+      height: 40px;
+      max-width: 80px;
+    }
+    .logo span {
+      font-size: 18px;
+    }
+
+    .navbar {
+      padding: 10px 15px;
     }
 
     .menu a {
-      text-decoration: none;
-      color: white;
-      font-size: 16px;
-      transition: color 0.3s, text-shadow 0.3s;
+      font-size: 14px;
     }
+  }
 
-    .menu a:hover {
-      color: #FFD700;
-      text-shadow: 0 0 6px #FFD700;
+  /* Adjust menu on mid-size desktops */
+  @media (max-width: 1200px) {
+    .menu a {
+      font-size: 15px; /* slightly smaller */
     }
-
-    /* Hamburger button (hidden by default) */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
+    .navbar {
+      padding: 10px 15px;
     }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: white;
-      transition: 0.3s;
-    }
-
-    /* Mobile view */
-    @media (max-width: 768px) {
-      .menu {
-        display: none; /* Hide menu initially */
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: rgba(10, 10, 35, 0.95);
-        flex-direction: column;
-        width: 200px;
-        padding: 20px;
-        gap: 15px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.7);
-      }
-
-      .menu.active {
-        display: flex; /* Show menu when active */
-      }
-
-      .hamburger {
-        display: flex; /* Show hamburger */
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <nav class="navbar">
-    <!-- Logo -->
+    <!-- LEFT: Logo -->
     <div class="logo">
-      <img src="images/logo.jpg" alt="Horizon Liquor Shop Logo">
+      <img src="images/logo.jpg" alt="Horizon Liquor">
       <span>Horizon Liquor</span>
     </div>
 
-    <!-- Menu -->
-    <div class="menu" id="menu">
-      <a href="index.php">Home</a>
-      <a href="shop.php">Shop</a>
-      <a href="custom.php">Custom Orders</a>
-      <a href="about.php">About</a>
-      <a href="contact.php">Contact</a>
-      <a href="login.php">Login</a>
-    </div>
+    <!-- RIGHT: Menu + Hamburger -->
+    <div class="nav-right">
+      <div class="menu" id="menu">
+        <a href="index.php">Home</a>
+        <a href="shop.php">Shop</a>
+        <a href="custom.php">Custom Orders</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a href="login.php">Login</a>
+      </div>
 
-    <!-- Hamburger -->
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </nav>
 
-  <script>
-    // Toggle menu on click
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('menu');
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
 
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('active');
-    });
-  </script>
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('active');
+    hamburger.classList.toggle('active'); // animate X
+  });
+</script>
 </body>
 </html>
