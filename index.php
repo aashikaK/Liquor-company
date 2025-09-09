@@ -1,6 +1,4 @@
-<?php
-require "navbar.php";
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +19,7 @@ require "navbar.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horizon Liquor Production Company</title>
-    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="css/style-index.css">
 </head>
 <body>
   <section class="hero">
@@ -37,7 +35,11 @@ require "navbar.php";
       <h1>Horizon Liquor — Taste. Explore. Order.</h1>
       <p>Custom drinks, smart recommendations, fast delivery.</p>
       <small>Discover your next favorite drink with our smart recommendations.</small>
-    <a href="shop.php" class="cta-btn">Explore Now</a>
+    <div class="hero-buttons">
+  <a href="shop.php" class="cta-btn">Explore Now</a>
+  <a href="register.php" class="cta-btn">Register</a>
+</div>
+
     </div>
   </div>
 </section>

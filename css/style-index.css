@@ -74,15 +74,27 @@
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(245,197,24,0.5);
 }
+.hero-buttons {
+  display: flex;
+  justify-content: center; /* keep them aligned horizontally */
+  gap: 15px; /* space between buttons */
+  margin-top: 20px; /* same as before */
+}
+
+.hero-buttons .cta-btn {
+  display: inline-block; /* inline buttons */
+  margin: 0; /* remove auto-centering */
+}
+
 
 /* Responsive */
 @media (max-width: 992px) {
   .hero-overlay {
-    align-items: center; /* text centered on smaller screens */
+    align-items: flex-start; /* text centered on smaller screens */
     padding: 0 20px;
   }
   .hero-text-box {
-    max-width: 90%;
+    max-width: 70%;
     text-align: center;
   }
   .cta-btn {
