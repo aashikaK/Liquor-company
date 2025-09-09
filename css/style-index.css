@@ -109,6 +109,9 @@
   left:125px;
   font-size: 19px;
 }
+.chatbot span:hover{
+  font-size: 21px;
+}
 
 
 /* Responsive */
