@@ -180,9 +180,9 @@ html {
 /* Features Section */
 .features {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop */
-  column-gap: 8rem;
-  row-gap: 5rem;
+  grid-template-columns: repeat(4, 1fr); /* 2 columns on desktop */
+  column-gap: 5rem;
+  row-gap: 3rem;
   padding: 4rem 2rem;
   background: #0a0a23; /* navy background */
   color: white;
