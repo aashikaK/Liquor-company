@@ -1,4 +1,6 @@
-<?php require "navbar.php"; ?>
+<?php require "navbar.php";
+require "db.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +38,7 @@
     </div>
     
   <!-- Scroll Down Arrow -->
-  <a href="#features" class="scroll-down">&#8595;</a>
+  <a href="#features" class="scroll-down-features">&#8595;</a>
   </section>
 
   <!-- <div class="chatbot">
@@ -68,7 +70,50 @@
       <h3>Custom Orders</h3>
       <p>Create your own blends and enjoy drinks made your way.</p>
     </div>
+    <!-- Scroll Down Arrow -->
+   <div class="arrow-container">
+      <a href="#popular-drinks" class="scroll-down-populardrinks">&#8595;</a>
+    </div>
+
   </section>
+
+  <!-- Popular Drinks Section -->
+<section class="popular-drinks" id="popular-drinks">
+  <h1>Popular Drinks</h1>
+  <div class="drink-cards">
+    <?php
+    // Fetch 4 popular drinks
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE is_popular = 1");
+    $stmt->execute();
+    $popularDrinks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($popularDrinks as $drink){
+        echo '<div class="drink-card">';
+        echo '<img src="'.$drink['image'].'" alt="'.$drink['name'].'">';
+        echo '<h3>'.$drink['name'].'</h3>';
+        echo '<p>'.$drink['description'].'</p>';
+        echo '<p class="price">NPR '.$drink['price'].'</p>';
+        echo '<a href="shop.php" class="cta-btn">Buy Now</a>';
+        echo '</div>';
+    }
+    ?>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="legal">
+      <a href="terms.php">Terms & Conditions</a>
+      <a href="privacy.php">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Horizon Liquor. All rights reserved.
+  </div>
+</footer>
+
+
 
 </body>
 </html>

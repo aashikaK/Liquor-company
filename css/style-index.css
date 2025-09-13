@@ -142,7 +142,7 @@
   .cta-btn { padding: 12px 25px; font-size: 0.9rem; }
 }
 
-.scroll-down {
+.scroll-down-features {
   position: absolute;
   bottom: 20px;       /* a little above bottom */
   left: 50%;
@@ -158,7 +158,7 @@
   transition: color 0.3s, transform 0.3s;
 }
 
-.scroll-down:hover {
+.scroll-down-features:hover {
   color: #ffd700;      /* even brighter on hover */
   transform: translateX(-50%) scale(1.2); /* grow slightly */
 }
@@ -179,6 +179,7 @@ html {
 
 /* Features Section */
 .features {
+  position: relative; 
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 2 columns on desktop */
   column-gap: 5rem;
@@ -198,7 +199,7 @@ html {
 
 /* Individual feature cards */
 .feature-card {
-  background: rgba(124, 213, 255, 0.199); /* subtle goldish highlight */
+  background: rgba(124, 213, 255, 0.199); 
   padding: 2.5rem;
   border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -225,7 +226,26 @@ html {
   font-size: 1.1rem; /* slightly larger */
   color: #eee;
 }
+.scroll-down-populardrinks {
+  position: absolute;
+  bottom: 55px;       /* a little above bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6rem;    /* bigger and bolder */
+  font-weight: 3000;   /* extra bold */
+  color: #ffffff;     /* bright yellow for visibility */
+  text-decoration: none;
+  z-index: 10;        /* above overlay and video */
+  cursor: pointer;    
+  animation: bounce 1s infinite;  /* faster bounce */
+  text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b; /* glow effect */
+  transition: color 0.3s, transform 0.3s;
+}
 
+.scroll-down-populardrinks:hover {
+  color: #ffd700;      /* even brighter on hover */
+  transform: translateX(-50%) scale(1.2); /* grow slightly */
+}
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .features {
@@ -249,5 +269,187 @@ html {
 
   .feature-card p {
     font-size: 1rem;
+  }
+}
+
+/* POPULAR DRINKS */
+
+.popular-drinks {
+  padding: 4rem 2rem;
+  background: #0a0a23; /* dark navy */
+  color: white;
+  text-align: center;
+}
+
+.popular-drinks h1 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: #ffcc00; /* gold */
+}
+
+.drink-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.drink-card {
+  background: rgba(124, 213, 255, 0.199);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.drink-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(255,204,0,0.4);
+}
+
+
+.drink-card img {
+  width: 100%;
+  height: 350px;          /* fixed height for all images */
+  object-fit: cover;      /* crops to fit nicely */
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+
+.drink-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffcc00;
+}
+
+.drink-card p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #eee;
+}
+
+.drink-card .price {
+  font-weight: 600;
+  color: #f5c518;
+  margin-bottom: 1rem;
+}
+
+/* Responsive adjustments for Popular Drinks */
+@media (max-width: 1200px) {
+  .drink-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .drink-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .popular-drinks h1 {
+    font-size: 2.5rem;
+  }
+
+  .drink-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .drink-card p {
+    font-size: 0.95rem;
+  }
+
+  .drink-card .price {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .drink-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .popular-drinks h1 {
+    font-size: 2rem;
+  }
+
+  .drink-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .drink-card p {
+    font-size: 0.9rem;
+  }
+
+  .drink-card .price {
+    font-size: 0.95rem;
+  }
+}
+
+/* Footer */
+.footer {
+  
+  background-color: rgba(124, 213, 255, 0.199);
+  border-radius: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center; /* center legal links now */
+  align-items: center;
+  flex-wrap: wrap; /* responsive wrap */
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content .legal {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-content .legal a {
+  color: #f5c518; /* gold link */
+  text-decoration: none;
+  font-weight: 500;
+  font-size:20px;
+  transition: color 0.3s;
+}
+
+.footer-content .legal a:hover {
+  color: #ffd700; /* brighter gold on hover */
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1rem;
+  }
+  .footer-content .legal {
+    gap: 1rem;
   }
 }
