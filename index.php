@@ -26,7 +26,7 @@ require "db.php";
         <small>Discover your next favorite drink with our smart recommendations.</small>
         <div class="hero-buttons">
           <a href="shop.php" class="cta-btn">Explore Now</a>
-          <a href="register.php" class="cta-btn">Register</a>
+          <a href="register.php" target="_blank" class="cta-btn">Register</a>
         </div>
       </div>
 
